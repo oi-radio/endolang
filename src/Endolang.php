@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Yahiru\Endolang;
 
 use Yahiru\Endolang\Exception\InvalidInputException;
+use Yahiru\Endolang\Exception\PointerUnderflowException;
 use Yahiru\Endolang\Exception\UnexpectedNodeException;
 use Yahiru\Endolang\Node\Loop;
 
@@ -54,6 +55,8 @@ final class Endolang
             }
 
             $this->output->write($char);
+        } elseif ($node instanceof Node\DecrementPointer) {
+            $this->decrementPointer();
         } elseif ($node instanceof Node\IncrementValue) {
             $this->setValue($this->getValue() + 1);
         } elseif ($node instanceof Node\DecrementValue) {
@@ -67,6 +70,15 @@ final class Endolang
         } else {
             throw new UnexpectedNodeException($node);
         }
+    }
+
+    private function decrementPointer(): void
+    {
+        if (0 === $this->position) {
+            throw new PointerUnderflowException();
+        }
+
+        $this->position--;
     }
 
     private function getValue(): int

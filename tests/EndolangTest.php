@@ -84,6 +84,12 @@ final class EndolangTest extends TestCase
                     'class' => Exception\InvalidInputException::class,
                 ],
             ],
+            [
+                'code' => 'ん',
+                'expected' => [
+                    'class' => Exception\PointerUnderflowException::class,
+                ],
+            ],
         ];
     }
 }

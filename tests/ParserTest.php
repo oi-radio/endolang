@@ -6,6 +6,7 @@ namespace Yahiru\Endolang;
 
 use PHPUnit\Framework\TestCase;
 use Yahiru\Endolang\Exception\SyntaxException;
+use Yahiru\Endolang\Node\DecrementPointer;
 use Yahiru\Endolang\Node\DecrementValue;
 use Yahiru\Endolang\Node\In;
 use Yahiru\Endolang\Node\IncrementValue;
@@ -49,8 +50,8 @@ final class ParserTest extends TestCase
     {
         return [
             [
-                'code' => 'どぅ〜結婚！',
-                'expected' => [new IncrementValue(), new DecrementValue(), new Out(), new Loop([]), new In()],
+                'code' => 'んどぅ〜結婚！',
+                'expected' => [new DecrementPointer(), new IncrementValue(), new DecrementValue(), new Out(), new Loop([]), new In()],
             ],
             [
                 'code' => '結！婚',
