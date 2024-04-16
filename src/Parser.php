@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Yahiru\Endolang;
 
+use Exception;
 use Yahiru\Endolang\Exception\UnexpectedTokenException;
 
 final class Parser
@@ -22,6 +23,7 @@ final class Parser
         while ($token = $lexer->next()) {
             $nodes[] = match ($token) {
                 Token::In => new Node\In(),
+                Token::LoopEnd => throw new Exception('Not implemented yet'),
             };
         }
 
