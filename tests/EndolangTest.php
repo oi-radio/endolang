@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Yahiru\Endolang;
 
 use PHPUnit\Framework\TestCase;
+use Throwable;
 use Yahiru\Endolang\Input\InMemoryInput;
 use Yahiru\Endolang\Output\InMemoryOutput;
 
@@ -47,6 +48,37 @@ final class EndolangTest extends TestCase
             [
                 'code' => '〜',
                 'expected' => "\x00",
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider runWithExceptionDataProvider
+     *
+     * @param array{class:class-string<Throwable>, message?:string} $expected
+     */
+    public function testRunWithException(string $code, array $expected): void
+    {
+        $this->expectException($expected['class']);
+
+        if (isset($expected['message'])) {
+            $this->expectExceptionMessage($expected['message']);
+        }
+
+        $this->endo->run($code);
+    }
+
+    /**
+     * @return list<array{code:string, expected: array{class:class-string<Throwable>, message?:string}}>
+     */
+    public static function runWithExceptionDataProvider(): array
+    {
+        return [
+            [
+                'code' => 'ぅ〜',
+                'expected' => [
+                    'class' => Exception\InvalidInputException::class,
+                ],
             ],
         ];
     }

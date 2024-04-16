@@ -30,6 +30,7 @@ final class Parser
     private function handleToken(Token $token, Lexer $lexer): Node
     {
         return match ($token) {
+            Token::DecrementValue => new Node\DecrementValue(),
             Token::In => new Node\In(),
             Token::Out => new Node\Out(),
             Token::LoopStart => $this->doParseLoop($lexer),

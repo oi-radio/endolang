@@ -54,6 +54,8 @@ final class Endolang
             }
 
             $this->output->write($char);
+        } elseif ($node instanceof Node\DecrementValue) {
+            $this->setValue($this->getValue() - 1);
         } elseif ($node instanceof Loop) {
             while ($this->getValue()) {
                 foreach ($node->nodes as $innerNode) {

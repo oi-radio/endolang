@@ -6,6 +6,7 @@ namespace Yahiru\Endolang;
 
 enum Token: string
 {
+    case DecrementValue = 'ぅ';
     case Out = '〜';
     case In = '！';
     case LoopStart = '結';
