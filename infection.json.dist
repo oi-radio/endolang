@@ -1,0 +1,29 @@
+{
+  "source": {
+    "directories": [
+      "src"
+    ]
+  },
+  "timeout": 10,
+  "logs": {
+    "text": "build/infection/infection.log",
+    "json": "build/infection/infection.json",
+    "summary": "build/infection/summary.log",
+    "perMutator": "build/infection/per-mutator.md",
+    "badge": {
+      "branch": "main"
+    }
+  },
+  "tmpDir": "build/tmp",
+  "mutators": {
+    "@default": true,
+    "@function_signature": false,
+    "TrueValue": {
+      "ignore": [
+        "NameSpace\\*\\Class::method"
+      ]
+    }
+  },
+  "testFramework":"phpunit",
+  "testFrameworkOptions": "-vvv"
+}

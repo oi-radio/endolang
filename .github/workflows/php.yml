@@ -1,0 +1,64 @@
+name: test_php
+on: push
+
+jobs:
+  test_php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          extensions: mbstring, pcov
+          tools: cs2pr
+
+      - name: Setup problem matchers for PHPUnit
+        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - name: Show PHP Versions
+        run: |
+          php -v
+
+      - name: Show PHP Extensions
+        run: |
+          php -m
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist
+
+      - name: Run php-cs-fixer
+        run: |
+          vendor/bin/php-cs-fixer fix \
+            --dry-run \
+            -vvv \
+            --config=.php-cs-fixer.dist.php \
+            --format=checkstyle | cs2pr
+
+      - name: Run phpstan
+        run: |
+          vendor/bin/phpstan analyse \
+            --memory-limit=-1 \
+            --error-format=github
+
+      - name: Run psalm
+        run: |
+          vendor/bin/psalm \
+            --memory-limit=-1 \
+            --output-format=github
+
+      - name: Run PHPUnit tests
+        run: |
+          vendor/bin/phpunit

@@ -1,0 +1,11 @@
+.php-cs-fixer.php
+.php-cs-fixer.cache
+phpunit.xml
+.phpunit.result.cache
+infection.json
+phpstan.neon
+vendor
+build
+local
+
+.php-version

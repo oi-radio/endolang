@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+require __DIR__.'/../vendor/autoload.php';
+
+$filepath = $argv[1] ?? null;
+
+if (null === $filepath) {
+    echo 'ファイルを指定してください。', PHP_EOL;
+    echo 'endolang {filepath}', PHP_EOL;
+
+    exit(1);
+}
+
+$file = @file_get_contents($filepath);
+
+if (false === $file) {
+    echo 'ファイルが読み込めません。', PHP_EOL;
+
+    exit(1);
+}
+
+(new Yahiru\Endolang\Endolang())->run($file);
