@@ -16,8 +16,9 @@ final class LexerTest extends TestCase
 {
     public function testNext(): void
     {
-        $lexer = new Lexer('婚！');
+        $lexer = new Lexer('結婚！');
 
+        $this->assertSame(Token::LoopStart, $lexer->next());
         $this->assertSame(Token::LoopEnd, $lexer->next());
         $this->assertSame(Token::In, $lexer->next());
         // 末尾に達したらnullを返す

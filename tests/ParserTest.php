@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace Yahiru\Endolang;
 
 use PHPUnit\Framework\TestCase;
+use Yahiru\Endolang\Exception\SyntaxException;
 use Yahiru\Endolang\Node\In;
+use Yahiru\Endolang\Node\Loop;
 
+use function assert;
 use function get_class;
 
 /**
@@ -43,9 +46,67 @@ final class ParserTest extends TestCase
     {
         return [
             [
-                'code' => '！',
-                'expected' => [new In()],
+                'code' => '結婚！',
+                'expected' => [new Loop([]), new In()],
             ],
+            [
+                'code' => '結！婚',
+                'expected' => [new Loop([new In()])],
+            ],
+            [
+                'code' => '結！結！婚！婚',
+                'expected' => [
+                    new Loop([
+                        new In(),
+                        new Loop([new In()]),
+                        new In(),
+                    ]),
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider parseWithNoLoopStartDataProvider
+     */
+    public function testParseWithNoLoopStart(string $code): void
+    {
+        $this->expectException(SyntaxException::class);
+        $this->expectExceptionMessage('ループの開始がありません。');
+
+        $this->parser->parse($code);
+    }
+
+    /**
+     * @return list<array{code:string}>
+     */
+    public static function parseWithNoLoopStartDataProvider(): array
+    {
+        return [
+            ['code' => '婚'],
+            ['code' => '結婚婚'],
+        ];
+    }
+
+    /**
+     * @dataProvider parseWithUnclosedLoopDataProvider
+     */
+    public function testParseWithUnclosedLoop(string $code): void
+    {
+        $this->expectException(SyntaxException::class);
+        $this->expectExceptionMessage('ループの終了がありません。');
+
+        $this->parser->parse($code);
+    }
+
+    /**
+     * @return list<array{code:string}>
+     */
+    public static function parseWithUnclosedLoopDataProvider(): array
+    {
+        return [
+            ['code' => '結'],
+            ['code' => '結結婚'],
         ];
     }
 
@@ -61,6 +122,11 @@ final class ParserTest extends TestCase
             $a = $actual[$i];
 
             $this->assertInstanceOf(get_class($e), $a);
+
+            if ($e instanceof Loop) {
+                assert($a instanceof Loop);
+                $this->assertNodes($e->nodes, $a->nodes);
+            }
         }
     }
 }

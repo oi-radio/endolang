@@ -7,5 +7,6 @@ namespace Yahiru\Endolang;
 enum Token: string
 {
     case In = '！';
+    case LoopStart = '結';
     case LoopEnd = '婚';
 }

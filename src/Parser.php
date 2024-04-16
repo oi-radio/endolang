@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Yahiru\Endolang;
 
-use Exception;
+use Yahiru\Endolang\Exception\SyntaxException;
 use Yahiru\Endolang\Exception\UnexpectedTokenException;
+use Yahiru\Endolang\Node\Loop;
 
 final class Parser
 {
@@ -17,16 +18,37 @@ final class Parser
     public function parse(string $code): array
     {
         $lexer = new Lexer($code);
-
         $nodes = [];
 
         while ($token = $lexer->next()) {
-            $nodes[] = match ($token) {
-                Token::In => new Node\In(),
-                Token::LoopEnd => throw new Exception('Not implemented yet'),
-            };
+            $nodes[] = $this->handleToken($token, $lexer);
         }
 
         return $nodes;
+    }
+
+    private function handleToken(Token $token, Lexer $lexer): Node
+    {
+        return match ($token) {
+            Token::In => new Node\In(),
+            Token::LoopStart => $this->doParseLoop($lexer),
+            // LoopEnd は構文が正しい場合は doParseLoop で処理されるため、ここに LoopEnd が来るのはプログラムのバグか構文エラーのみ.
+            Token::LoopEnd => throw new SyntaxException('ループの開始がありません。'),
+        };
+    }
+
+    private function doParseLoop(Lexer $lexer): Loop
+    {
+        $nodes = [];
+
+        while ($token = $lexer->next()) {
+            if (Token::LoopEnd === $token) {
+                return new Loop($nodes);
+            }
+
+            $nodes[] = $this->handleToken($token, $lexer);
+        }
+
+        throw new SyntaxException('ループの終了がありません。');
     }
 }
