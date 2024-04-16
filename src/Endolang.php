@@ -54,6 +54,8 @@ final class Endolang
             }
 
             $this->output->write($char);
+        } elseif ($node instanceof Node\IncrementValue) {
+            $this->setValue($this->getValue() + 1);
         } elseif ($node instanceof Node\DecrementValue) {
             $this->setValue($this->getValue() - 1);
         } elseif ($node instanceof Loop) {

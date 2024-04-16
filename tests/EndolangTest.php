@@ -49,6 +49,10 @@ final class EndolangTest extends TestCase
                 'code' => '〜',
                 'expected' => "\x00",
             ],
+            [
+                'code' => 'どどどど〜',
+                'expected' => "\x04",
+            ],
         ];
     }
 
