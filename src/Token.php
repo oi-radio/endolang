@@ -6,4 +6,5 @@ namespace Yahiru\Endolang;
 
 enum Token: string
 {
+    case In = '！';
 }

@@ -22,4 +22,6 @@ if (false === $file) {
     exit(1);
 }
 
-(new Yahiru\Endolang\Endolang())->run($file);
+(new Yahiru\Endolang\Endolang(
+    new \Yahiru\Endolang\Input\StdInput(),
+))->run($file);
