@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Yahiru\Endolang\Exception\SyntaxException;
 use Yahiru\Endolang\Node\In;
 use Yahiru\Endolang\Node\Loop;
+use Yahiru\Endolang\Node\Out;
 
 use function assert;
 use function get_class;
@@ -46,8 +47,8 @@ final class ParserTest extends TestCase
     {
         return [
             [
-                'code' => '結婚！',
-                'expected' => [new Loop([]), new In()],
+                'code' => '〜結婚！',
+                'expected' => [new Out(), new Loop([]), new In()],
             ],
             [
                 'code' => '結！婚',

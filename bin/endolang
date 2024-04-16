@@ -24,4 +24,5 @@ if (false === $file) {
 
 (new Yahiru\Endolang\Endolang(
     new \Yahiru\Endolang\Input\StdInput(),
+    new \Yahiru\Endolang\Output\StdOutput(),
 ))->run($file);

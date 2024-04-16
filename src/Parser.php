@@ -31,6 +31,7 @@ final class Parser
     {
         return match ($token) {
             Token::In => new Node\In(),
+            Token::Out => new Node\Out(),
             Token::LoopStart => $this->doParseLoop($lexer),
             // LoopEnd は構文が正しい場合は doParseLoop で処理されるため、ここに LoopEnd が来るのはプログラムのバグか構文エラーのみ.
             Token::LoopEnd => throw new SyntaxException('ループの開始がありません。'),

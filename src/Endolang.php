@@ -8,6 +8,7 @@ use Yahiru\Endolang\Exception\InvalidInputException;
 use Yahiru\Endolang\Exception\UnexpectedNodeException;
 use Yahiru\Endolang\Node\Loop;
 
+use function mb_chr;
 use function mb_ord;
 
 final class Endolang
@@ -18,6 +19,7 @@ final class Endolang
 
     public function __construct(
         private readonly Input $input,
+        private readonly Output $output,
     ) {
     }
 
@@ -43,6 +45,15 @@ final class Endolang
             }
 
             $this->setValue($codePoint);
+        } elseif ($node instanceof Node\Out) {
+            $value = $this->getValue();
+            $char = mb_chr($value);
+
+            if (! is_string($char)) {
+                throw new InvalidInputException((string) $value);
+            }
+
+            $this->output->write($char);
         } elseif ($node instanceof Loop) {
             while ($this->getValue()) {
                 foreach ($node->nodes as $innerNode) {
