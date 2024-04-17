@@ -55,6 +55,8 @@ final class Endolang
             }
 
             $this->output->write($char);
+        } elseif ($node instanceof Node\IncrementPointer) {
+            $this->incrementPointer();
         } elseif ($node instanceof Node\DecrementPointer) {
             $this->decrementPointer();
         } elseif ($node instanceof Node\IncrementValue) {
@@ -70,6 +72,11 @@ final class Endolang
         } else {
             throw new UnexpectedNodeException($node);
         }
+    }
+
+    private function incrementPointer(): void
+    {
+        $this->position++;
     }
 
     private function decrementPointer(): void

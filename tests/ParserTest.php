@@ -9,6 +9,7 @@ use Yahiru\Endolang\Exception\SyntaxException;
 use Yahiru\Endolang\Node\DecrementPointer;
 use Yahiru\Endolang\Node\DecrementValue;
 use Yahiru\Endolang\Node\In;
+use Yahiru\Endolang\Node\IncrementPointer;
 use Yahiru\Endolang\Node\IncrementValue;
 use Yahiru\Endolang\Node\Loop;
 use Yahiru\Endolang\Node\Out;
@@ -50,8 +51,8 @@ final class ParserTest extends TestCase
     {
         return [
             [
-                'code' => 'んどぅ〜結婚！',
-                'expected' => [new DecrementPointer(), new IncrementValue(), new DecrementValue(), new Out(), new Loop([]), new In()],
+                'code' => 'えんどぅ〜結婚！',
+                'expected' => [new IncrementPointer(), new DecrementPointer(), new IncrementValue(), new DecrementValue(), new Out(), new Loop([]), new In()],
             ],
             [
                 'code' => '結！婚',
