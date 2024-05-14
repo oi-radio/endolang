@@ -9,10 +9,7 @@
     "text": "build/infection/infection.log",
     "json": "build/infection/infection.json",
     "summary": "build/infection/summary.log",
-    "perMutator": "build/infection/per-mutator.md",
-    "badge": {
-      "branch": "main"
-    }
+    "perMutator": "build/infection/per-mutator.md"
   },
   "tmpDir": "build/tmp",
   "mutators": {
@@ -25,5 +22,5 @@
     }
   },
   "testFramework":"phpunit",
-  "testFrameworkOptions": "-vvv"
+  "testFrameworkOptions": "verbose"
 }
