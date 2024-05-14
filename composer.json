@@ -42,7 +42,7 @@
       "@test"
     ],
     "coverage": [
-      "php -d pcov.directory=. -d pcov.exclude=./tests ./vendor/bin/phpunit --coverage-html=build/coverage --coverage-text"
+      "php -d xdebug.mode=coverage -d pcov.directory=. -d pcov.exclude=./tests ./vendor/bin/phpunit --coverage-html=build/coverage --coverage-text"
     ],
     "infection": "infection --git-diff-filter=A --git-diff-base=origin/main --ignore-msi-with-no-mutations",
     "cs": "php-cs-fixer fix -v --dry-run",
