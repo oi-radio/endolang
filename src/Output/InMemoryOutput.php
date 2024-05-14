@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Yahiru\Endolang\Output;
+namespace OiRadio\Endolang\Output;
 
-use Yahiru\Endolang\Output;
+use OiRadio\Endolang\Output;
 
 final class InMemoryOutput implements Output
 {

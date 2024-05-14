@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yahiru\Endolang\Output;
+namespace OiRadio\Endolang\Output;
 
 use PHPUnit\Framework\TestCase;
 

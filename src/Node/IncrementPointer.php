@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Yahiru\Endolang\Node;
+namespace OiRadio\Endolang\Node;
 
-use Yahiru\Endolang\Node;
+use OiRadio\Endolang\Node;
 
 final class IncrementPointer implements Node
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yahiru\Endolang;
+namespace OiRadio\Endolang;
 
 use PHPUnit\Framework\TestCase;
-use Yahiru\Endolang\Exception\UnexpectedTokenException;
+use OiRadio\Endolang\Exception\UnexpectedTokenException;
 
 /**
  * @internal

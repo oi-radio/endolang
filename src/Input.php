@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yahiru\Endolang;
+namespace OiRadio\Endolang;
 
 interface Input
 {

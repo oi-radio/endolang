@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yahiru\Endolang\Exception;
+namespace OiRadio\Endolang\Exception;
 
 use Throwable;
 

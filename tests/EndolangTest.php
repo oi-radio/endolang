@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Yahiru\Endolang;
+namespace OiRadio\Endolang;
 
 use PHPUnit\Framework\TestCase;
 use Throwable;
-use Yahiru\Endolang\Input\InMemoryInput;
-use Yahiru\Endolang\Output\InMemoryOutput;
+use OiRadio\Endolang\Input\InMemoryInput;
+use OiRadio\Endolang\Output\InMemoryOutput;
 
 /**
  * @internal

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yahiru\Endolang\Exception;
+namespace OiRadio\Endolang\Exception;
 
 use Throwable;
-use Yahiru\Endolang\Node;
+use OiRadio\Endolang\Node;
 
 final class UnexpectedNodeException extends \RuntimeException implements RuntimeException
 {

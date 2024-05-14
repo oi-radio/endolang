@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Yahiru\Endolang;
+namespace OiRadio\Endolang;
 
-use Yahiru\Endolang\Exception\UnexpectedTokenException;
+use OiRadio\Endolang\Exception\UnexpectedTokenException;
 
 use function in_array;
 use function mb_str_split;

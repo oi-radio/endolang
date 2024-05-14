@@ -22,7 +22,7 @@ if (false === $file) {
     exit(1);
 }
 
-(new Yahiru\Endolang\Endolang(
-    new \Yahiru\Endolang\Input\StdInput(),
-    new \Yahiru\Endolang\Output\StdOutput(),
+(new OiRadio\Endolang\Endolang(
+    new \OiRadio\Endolang\Input\StdInput(),
+    new \OiRadio\Endolang\Output\StdOutput(),
 ))->run($file);

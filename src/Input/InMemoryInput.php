@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Yahiru\Endolang\Input;
+namespace OiRadio\Endolang\Input;
 
-use Yahiru\Endolang\Input;
+use OiRadio\Endolang\Input;
 
 use function mb_str_split;
 

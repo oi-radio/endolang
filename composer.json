@@ -1,5 +1,5 @@
 {
-  "name": "yahiru/endolang",
+  "name": "oiradio/endolang",
   "description": "",
   "authors": [
     {
@@ -23,12 +23,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Yahiru\\Endolang\\": "src/"
+      "OiRadio\\Endolang\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Yahiru\\Endolang\\": "tests/"
+      "OiRadio\\Endolang\\": "tests/"
     }
   },
   "scripts": {

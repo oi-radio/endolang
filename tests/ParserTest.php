@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Yahiru\Endolang;
+namespace OiRadio\Endolang;
 
 use PHPUnit\Framework\TestCase;
-use Yahiru\Endolang\Exception\SyntaxException;
-use Yahiru\Endolang\Node\DecrementPointer;
-use Yahiru\Endolang\Node\DecrementValue;
-use Yahiru\Endolang\Node\In;
-use Yahiru\Endolang\Node\IncrementPointer;
-use Yahiru\Endolang\Node\IncrementValue;
-use Yahiru\Endolang\Node\Loop;
-use Yahiru\Endolang\Node\Out;
+use OiRadio\Endolang\Exception\SyntaxException;
+use OiRadio\Endolang\Node\DecrementPointer;
+use OiRadio\Endolang\Node\DecrementValue;
+use OiRadio\Endolang\Node\In;
+use OiRadio\Endolang\Node\IncrementPointer;
+use OiRadio\Endolang\Node\IncrementValue;
+use OiRadio\Endolang\Node\Loop;
+use OiRadio\Endolang\Node\Out;
 
 use function assert;
 use function get_class;

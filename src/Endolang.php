@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Yahiru\Endolang;
+namespace OiRadio\Endolang;
 
-use Yahiru\Endolang\Exception\InvalidInputException;
-use Yahiru\Endolang\Exception\PointerUnderflowException;
-use Yahiru\Endolang\Exception\UnexpectedNodeException;
-use Yahiru\Endolang\Node\Loop;
+use OiRadio\Endolang\Exception\InvalidInputException;
+use OiRadio\Endolang\Exception\PointerUnderflowException;
+use OiRadio\Endolang\Exception\UnexpectedNodeException;
+use OiRadio\Endolang\Node\Loop;
 
 use function mb_chr;
 use function mb_ord;

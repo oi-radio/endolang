@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Yahiru\Endolang;
+namespace OiRadio\Endolang;
 
-use Yahiru\Endolang\Exception\SyntaxException;
-use Yahiru\Endolang\Exception\UnexpectedTokenException;
-use Yahiru\Endolang\Node\Loop;
+use OiRadio\Endolang\Exception\SyntaxException;
+use OiRadio\Endolang\Exception\UnexpectedTokenException;
+use OiRadio\Endolang\Node\Loop;
 
 final class Parser
 {
