@@ -2,6 +2,6 @@
 
 ## run
 ```bash
-$ bin/endolang example/hello_world.endo
+$ bin/endolang example/congratulations.endo
 ```
 
